@@ -4,7 +4,6 @@ import Types
 
 import Data.Functor.Identity
 import qualified Data.Map as Map
-import Data.Maybe
 
 import Control.Monad.Except
 
