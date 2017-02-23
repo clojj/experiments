@@ -1,17 +1,17 @@
 module Eval2IO where
 
-import Types
+import           Types
 
-import Data.Functor.Identity
-import qualified Data.Map as Map
+import           Data.Functor.Identity
+import qualified Data.Map              as Map
 
-import Control.Monad.Except
+import           Control.Monad.Except
 
 -- String is the type arg to ErrorT : the type of exceptions in example
 type Eval2IO alpha = ExceptT String IO alpha
 
 runEval2IO :: Eval2IO alpha -> IO (Either String alpha)
-runEval2IO ev = runExceptT ev
+runEval2IO = runExceptT
 
 eval2aIO :: Env -> Exp -> Eval2IO Value
 
@@ -20,7 +20,7 @@ eval2aIO env (Lit i) = return $ IntVal i
 eval2aIO env (Var n) =
   case Map.lookup n env of
     Nothing -> throwError $ "unbound var: " ++ n
-    Just v -> return v
+    Just v  -> return v
 
 eval2aIO env (Plus e1 e2) = do
   IntVal i1 <- eval2aIO env e1
