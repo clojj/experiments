@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Types, Test.HUnit.Util, Eval0, Eval1, Eval2
+  exposed-modules:     Types, Test.HUnit.Util, Eval0, Eval1, Eval2, Eval2IO
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , HUnit
@@ -29,6 +29,7 @@ executable main
   build-depends:       base
                      , learn-haskell-coq-ml-etc
                      , containers
+                     , mtl
   default-language:    Haskell2010
 
 test-suite test
