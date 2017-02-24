@@ -29,8 +29,7 @@ main = do
   print "the END"
 
 errorHandler :: String -> Eval2 Value
-errorHandler s = do
-  return $ IntVal 9999
+errorHandler s = return $ IntVal 9999
 
 errorHandlerIO :: String -> Eval2IO Value
 errorHandlerIO s = do

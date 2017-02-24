@@ -1,4 +1,4 @@
-module Eval2 where
+module Eval3 where
 
 import Types
 
@@ -7,13 +7,12 @@ import qualified Data.Map as Map
 
 import Control.Monad.Except
 
--- String is the type arg to ErrorT : the type of exceptions in example
-type Eval2 alpha = ExceptT String Identity alpha
+type Eval3 alpha = ReaderT ExceptT String Identity alpha
 
-runEval2 :: Eval2 alpha -> Either String alpha
+runEval2 :: Eval3 alpha -> Either String alpha
 runEval2 ev = runIdentity (runExceptT ev)
 
-eval2a :: Env -> Exp -> Eval2 Value
+eval2a :: Env -> Exp -> Eval3 Value
 eval2a env (Lit i) = return $ IntVal i
 -- eval1 / eval2a diff:
 eval2a env (Var n) =
