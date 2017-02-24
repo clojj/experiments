@@ -1,6 +1,7 @@
 import Eval0
 import Eval1
 import Eval2
+import Eval3
 
 import Types
 
@@ -33,7 +34,7 @@ t2a1 =
 
 t2a2 = U.e "t2a2"
      (runEval2 (eval2a Map.empty (Plus (Lit 12) (Abs "x" (Var "x")))))
-     "Pattern match failure in do expression at src/Eval2.hs:25:3-11"
+     "Pattern match failure in do expression at src/Eval2.hs:27:3-11"
 
 t2b0 =
   U.t
@@ -47,6 +48,10 @@ t2b1 =
     (runEval2 (eval2b Map.empty (App (Lit 12) (Lit 0))))
     (Left "type error in App")
 
+t30 = U.t "t30"
+     (runEval3 Map.empty (eval3 exampleExp))
+     (Right (IntVal 18))
+
 main :: IO T.Counts
 main = do
   T.runTestTT $ T.TestList $ t00 ++ t01 ++ t01a
@@ -54,3 +59,4 @@ main = do
   T.runTestTT $ T.TestList $ t2a0 ++ t2a1
   T.runTestTT $ T.TestList t2a2
   T.runTestTT $ T.TestList $ t2b0 ++ t2b1
+  T.runTestTT $ T.TestList $ t30
