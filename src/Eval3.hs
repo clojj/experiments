@@ -18,7 +18,7 @@ eval3 :: Exp -> Eval3 Value
 eval3 (Lit i) = return $ IntVal i
 
 eval3 (Var n) = do
-  env <- ask -- eval2b / eval3 diff
+  env <- ask
   case Map.lookup n env of
     Nothing -> throwError ("unbound variable: " ++ n)
     Just val -> return val

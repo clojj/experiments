@@ -1,8 +1,8 @@
-name:                learn-haskell-coq-ml-etc
+name:                experiments
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/learn-haskell-coq-ml-etc#readme
+homepage:            https://github.com/githubuser/experiments#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Author name here
@@ -14,7 +14,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Types, Test.HUnit.Util, Eval0, Eval1, Eval2, Eval2IO, Eval3
+  exposed-modules:     Types, Test.HUnit.Util, Eval0, Eval1, Eval2, Eval2IO, Eval3, ArrowFun
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , HUnit
@@ -26,9 +26,17 @@ executable main
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , learn-haskell-coq-ml-etc
+                     , experiments
                      , containers
                      , mtl
+  default-language:    Haskell2010
+
+executable arrowfun
+  hs-source-dirs:      app
+  main-is:             MainArrowFun.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , experiments
   default-language:    Haskell2010
 
 test-suite test
@@ -36,7 +44,7 @@ test-suite test
   hs-source-dirs:      test
   main-is:             Tests.hs
   build-depends:       base
-                     , learn-haskell-coq-ml-etc
+                     , experiments
                      , HUnit
                      , containers
                      , mtl
@@ -45,4 +53,4 @@ test-suite test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/learn-haskell-coq-ml-etc
+  location: https://github.com/githubuser/experiments
