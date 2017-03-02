@@ -4,12 +4,10 @@ import Control.Arrow
 import Control.Category
 import Prelude hiding (id, (.))
 
-newtype SimpleFunc a b = SimpleFunc
-  { runF :: (a -> b)
-  }
+newtype SimpleFunc a b = SimpleFunc { runF :: a -> b }
 
 instance Arrow SimpleFunc where
-  arr f = SimpleFunc f
+  arr = SimpleFunc
 
   first (SimpleFunc f) = SimpleFunc (mapFst f)
     where
