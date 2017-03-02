@@ -3,3 +3,4 @@
 out/
 .stack-work/
 learn-haskell-coq-ml-etc.iml
+.vscode/
