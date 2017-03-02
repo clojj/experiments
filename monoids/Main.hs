@@ -21,7 +21,6 @@ newtype Transaction a = Transaction { getTransaction :: STM a }
 
 instance Monoid (Transaction a) where
     mempty = Transaction STM.retry
-
     mappend (Transaction l) (Transaction r) = Transaction (l `STM.orElse` r)
 
 data Event = Tick | KeyPress Char | Message ByteString deriving (Show)

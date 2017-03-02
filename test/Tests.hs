@@ -11,6 +11,7 @@ import System.IO.Unsafe -- for one unit test
 import qualified Test.HUnit as T
 import qualified Test.HUnit.Util as U
 
+exampleExp :: Exp
 exampleExp = Plus (Lit 12) (App (Abs "x" (Var "x")) (Plus (Lit 4) (Lit 2)))
 
 t00 = U.t "t00" (eval0 Map.empty exampleExp) (IntVal 18)
